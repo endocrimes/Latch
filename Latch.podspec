@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license            = "MIT"
   s.author             = { "Daniel Tomlinson" => "Dan@Tomlinson.io" }
   s.social_media_url   = "http://twitter.com/dantoml"
-  s.platform           = :ios
+  s.platform           = :ios, "8.0"
   s.source             = { :git => "#{s.homepage}.git", :tag => s.version }
   s.source_files       = "Classes", "Latch/*.{h,swift}"
   s.framework          = "Security"
