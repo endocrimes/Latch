@@ -9,15 +9,35 @@
 import Foundation
 import Security
 
-public enum LatchAccessibility {
+public enum LatchAccessibility: RawRepresentable {
     case WhenUnlocked
     case AfterFirstUnlock
     case Always
     case WhenUnlockedThisDeviceOnly
     case AfterFirstUnlockThisDeviceOnly
     case AlwaysThisDeviceOnly
-    
-    internal func toString() -> String {
+
+    public init?(rawValue: CFString) {
+        switch rawValue as NSString {
+        case kSecAttrAccessibleWhenUnlocked:
+            self = .WhenUnlocked
+        case kSecAttrAccessibleAfterFirstUnlock:
+            self = .AfterFirstUnlock
+        case kSecAttrAccessibleAlways:
+            self = .Always
+        case kSecAttrAccessibleWhenUnlockedThisDeviceOnly:
+            self = .WhenUnlockedThisDeviceOnly
+        case kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly:
+            self = .AfterFirstUnlockThisDeviceOnly
+        case kSecAttrAccessibleAlwaysThisDeviceOnly:
+            self = .AlwaysThisDeviceOnly
+        default:
+            return nil
+        }
+
+    }
+
+    public var rawValue: CFString {
         switch self {
         case .WhenUnlocked:
             return kSecAttrAccessibleWhenUnlocked as String
@@ -105,7 +125,7 @@ public struct Latch {
         
         var update = [String : AnyObject]()
         update[kSecValueData as String] = object
-        update[kSecAttrAccessible as String] = state.accessibility.toString()
+        update[kSecAttrAccessible as String] = state.accessibility.rawValue
         
         var status = errSecSuccess
         if dataForKey(key) != nil { // Data already exists, we're updating not writing.
