@@ -9,14 +9,74 @@
 import Foundation
 import Security
 
+/**
+    LatchAccessibility defines the access restrictions for the underlying
+    keychain items. It maps 1:1 with kSecAttrAccessible values.
+*/
 public enum LatchAccessibility: RawRepresentable {
+    /**
+    Data can only be accessed while the device is unlocked. This is recommended
+    for items that only need be accesible while the application is in the 
+    foreground. 
+    
+    Data with this attribute will migrate to a new device when using encrypted
+    backups.
+    */
     case WhenUnlocked
+    
+    /**
+    Data can only be accessed once the device has been unlocked after a restart.
+    This is recommended for items that need to be accesible by background
+    applications.
+    
+    Data with this attribute will migrate to a new device
+    when using encrypted backups.
+    */
     case AfterFirstUnlock
+    
+    /**
+    Data can always be accessed regardless of the lock state of the device. 
+    This is **not recommended** for anything except system use.
+    
+    Items with this attribute will migrate to a new device when using encrypted 
+    backups.
+    */
     case Always
+    
+    /**
+    Data can only be accessed while the device is unlocked. This is recommended 
+    for items that only need be accesible while the application is in the 
+    foreground.
+    
+    Items with this attribute will never migrate to a new device, so after
+    a backup is restored to a new device, these items will be missing.
+    */
     case WhenUnlockedThisDeviceOnly
+    
+    /**
+    Data can only be accessed once the device has been unlocked after a restart.
+    This is recommended for items that need to be accessible by background
+    applications.
+    
+    Items with this attribute will never migrate to a new device, so after a 
+    backup is restored to a new device these items will be missing.
+    */
     case AfterFirstUnlockThisDeviceOnly
+    
+    /**
+    Data can always be accessed regardless of the lock state of the device. 
+    This option is not recommended for anything except system use. 
+    
+    Items with this attribute will never migrate to a new device, so after a 
+    backup is restored to a new device, these items will be missing.
+    */
     case AlwaysThisDeviceOnly
 
+    /**
+    Create a new LatchAccessibility value using a kSecAttrAccessible value.
+    
+    :param: rawValue A CFString representing a kSecAttrAccessible value.
+    */
     public init?(rawValue: CFString) {
         switch rawValue as NSString {
         case kSecAttrAccessibleWhenUnlocked:
@@ -36,21 +96,24 @@ public enum LatchAccessibility: RawRepresentable {
         }
 
     }
-
+    
+    /**
+    Get the rawValue of the current enum type. Will be a kSecAttrAccessible value.
+    */
     public var rawValue: CFString {
         switch self {
         case .WhenUnlocked:
-            return kSecAttrAccessibleWhenUnlocked as String
+            return kSecAttrAccessibleWhenUnlocked
         case .AfterFirstUnlock:
-            return kSecAttrAccessibleAfterFirstUnlock as String
+            return kSecAttrAccessibleAfterFirstUnlock
         case .Always:
-            return kSecAttrAccessibleAlways as String
+            return kSecAttrAccessibleAlways
         case .WhenUnlockedThisDeviceOnly:
-            return kSecAttrAccessibleWhenUnlockedThisDeviceOnly as String
+            return kSecAttrAccessibleWhenUnlockedThisDeviceOnly
         case .AfterFirstUnlockThisDeviceOnly:
-            return kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly as String
+            return kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
         case .AlwaysThisDeviceOnly:
-            return kSecAttrAccessibleAlwaysThisDeviceOnly as String
+            return kSecAttrAccessibleAlwaysThisDeviceOnly
         }
     }
 }
@@ -61,6 +124,11 @@ private struct LatchState {
     var accessibility: LatchAccessibility
 }
 
+/**
+    Latch is a simple abstraction around the iOS and OS X keychain API.
+    Multiple Latch instances can use the same service, accessGroup, and 
+    accessibility attributes.
+*/
 public struct Latch {
     private var state: LatchState
     
