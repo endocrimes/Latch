@@ -26,7 +26,9 @@ class LatchTests: XCTestCase {
     override func setUp() {
         super.setUp()
         latch = Latch(service: "co.rocketapps.latch.tests")
+        #if os(ios) || os(watchos)
         latch.resetKeychain()
+        #endif
     }
     
     override func tearDown() {
@@ -108,6 +110,7 @@ class LatchTests: XCTestCase {
         latch.removeObjectForKey(testKey)
     }
     
+    #if os(ios) || os(watchos)
     func test_can_reset_keychain() {
         let values = [
             ("key1", data("value")),
@@ -125,5 +128,5 @@ class LatchTests: XCTestCase {
             AssertSuccessfulWrite(ofData: nil, forKey: key, inLatch: latch)
         }
     }
-    
+    #endif
 }

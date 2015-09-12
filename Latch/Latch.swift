@@ -234,8 +234,10 @@ public struct Latch {
         return false
     }
     
+    #if os(ios) || os(watchos)
     /**
-    Remove all objects from the keychain for the current app.
+    Remove all objects from the keychain for the current app. Only available on
+    iOS and watchOS.
     */
     public func resetKeychain() -> Bool {
         let query = [kSecClass as String : kSecClassGenericPassword as String]
@@ -247,6 +249,7 @@ public struct Latch {
         
         return true
     }
+    #endif
     
     // MARK - Private
     
