@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6534D5421BA42B3200D04972 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53A1BA42B3200D04972 /* Debug.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5431BA42B3200D04972 /* iOS Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53B1BA42B3200D04972 /* iOS Framework.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5441BA42B3200D04972 /* iOS Static Library.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53C1BA42B3200D04972 /* iOS Static Library.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5451BA42B3200D04972 /* iOS Tests.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53D1BA42B3200D04972 /* iOS Tests.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5461BA42B3200D04972 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53E1BA42B3200D04972 /* Release.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5471BA42B3200D04972 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53F1BA42B3200D04972 /* Shared.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5481BA42B3200D04972 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D5401BA42B3200D04972 /* Warnings.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		6534D5491BA42B3200D04972 /* watchOS Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */; settings = {ASSET_TAGS = (); }; };
 		6534D5571BA42C1900D04972 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6534D5581BA42C2000D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; settings = {ASSET_TAGS = (); }; };
 		656BF56B1B97648A00CE90D4 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -268,14 +260,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6534D5491BA42B3200D04972 /* watchOS Framework.xcconfig in Resources */,
-				6534D5431BA42B3200D04972 /* iOS Framework.xcconfig in Resources */,
-				6534D5441BA42B3200D04972 /* iOS Static Library.xcconfig in Resources */,
-				6534D5421BA42B3200D04972 /* Debug.xcconfig in Resources */,
-				6534D5451BA42B3200D04972 /* iOS Tests.xcconfig in Resources */,
-				6534D5461BA42B3200D04972 /* Release.xcconfig in Resources */,
-				6534D5481BA42B3200D04972 /* Warnings.xcconfig in Resources */,
-				6534D5471BA42B3200D04972 /* Shared.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
