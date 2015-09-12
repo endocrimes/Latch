@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6534D5571BA42C1900D04972 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6534D5581BA42C2000D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; settings = {ASSET_TAGS = (); }; };
+		6534D5681BA4365600D04972 /* Latch-OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534D55E1BA4365600D04972 /* Latch-OSX.framework */; settings = {ASSET_TAGS = (); }; };
+		6534D5751BA4369200D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; settings = {ASSET_TAGS = (); }; };
+		6534D5761BA4369A00D04972 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6534D5771BA436A400D04972 /* LatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5761B97648A00CE90D4 /* LatchTests.swift */; settings = {ASSET_TAGS = (); }; };
 		656BF56B1B97648A00CE90D4 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		656BF5721B97648A00CE90D4 /* Latch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656BF5671B97648A00CE90D4 /* Latch.framework */; };
 		656BF5771B97648A00CE90D4 /* LatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5761B97648A00CE90D4 /* LatchTests.swift */; };
@@ -16,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6534D5691BA4365600D04972 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 656BF55E1B97648A00CE90D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6534D55D1BA4365600D04972;
+			remoteInfo = "Latch-OSX";
+		};
 		656BF5731B97648A00CE90D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 656BF55E1B97648A00CE90D4 /* Project object */;
@@ -35,6 +46,8 @@
 		6534D5401BA42B3200D04972 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS Framework.xcconfig"; sourceTree = "<group>"; };
 		6534D54F1BA42C0700D04972 /* Latch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Latch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6534D55E1BA4365600D04972 /* Latch-OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Latch-OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6534D5671BA4365600D04972 /* Latch-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latch-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656BF5671B97648A00CE90D4 /* Latch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Latch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		656BF56A1B97648A00CE90D4 /* Latch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Latch.h; sourceTree = "<group>"; };
 		656BF56C1B97648A00CE90D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +62,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6534D55A1BA4365600D04972 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6534D5641BA4365600D04972 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6534D5681BA4365600D04972 /* Latch-OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +137,8 @@
 				656BF5671B97648A00CE90D4 /* Latch.framework */,
 				656BF5711B97648A00CE90D4 /* LatchTests.xctest */,
 				6534D54F1BA42C0700D04972 /* Latch.framework */,
+				6534D55E1BA4365600D04972 /* Latch-OSX.framework */,
+				6534D5671BA4365600D04972 /* Latch-OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +173,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6534D55B1BA4365600D04972 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6534D5761BA4369A00D04972 /* Latch.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656BF5641B97648A00CE90D4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +209,42 @@
 			productName = "Latch-watchOS";
 			productReference = 6534D54F1BA42C0700D04972 /* Latch.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		6534D55D1BA4365600D04972 /* Latch-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6534D5731BA4365600D04972 /* Build configuration list for PBXNativeTarget "Latch-OSX" */;
+			buildPhases = (
+				6534D5591BA4365600D04972 /* Sources */,
+				6534D55A1BA4365600D04972 /* Frameworks */,
+				6534D55B1BA4365600D04972 /* Headers */,
+				6534D55C1BA4365600D04972 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Latch-OSX";
+			productName = "Latch-OSX";
+			productReference = 6534D55E1BA4365600D04972 /* Latch-OSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6534D5661BA4365600D04972 /* Latch-OSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6534D5741BA4365600D04972 /* Build configuration list for PBXNativeTarget "Latch-OSXTests" */;
+			buildPhases = (
+				6534D5631BA4365600D04972 /* Sources */,
+				6534D5641BA4365600D04972 /* Frameworks */,
+				6534D5651BA4365600D04972 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6534D56A1BA4365600D04972 /* PBXTargetDependency */,
+			);
+			name = "Latch-OSXTests";
+			productName = "Latch-OSXTests";
+			productReference = 6534D5671BA4365600D04972 /* Latch-OSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		656BF5661B97648A00CE90D4 /* Latch */ = {
 			isa = PBXNativeTarget;
@@ -221,6 +295,12 @@
 					6534D54E1BA42C0700D04972 = {
 						CreatedOnToolsVersion = 7.0;
 					};
+					6534D55D1BA4365600D04972 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					6534D5661BA4365600D04972 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					656BF5661B97648A00CE90D4 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -244,12 +324,28 @@
 				656BF5661B97648A00CE90D4 /* Latch */,
 				656BF5701B97648A00CE90D4 /* LatchTests */,
 				6534D54E1BA42C0700D04972 /* Latch-watchOS */,
+				6534D55D1BA4365600D04972 /* Latch-OSX */,
+				6534D5661BA4365600D04972 /* Latch-OSXTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6534D54D1BA42C0700D04972 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6534D55C1BA4365600D04972 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6534D5651BA4365600D04972 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,6 +377,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6534D5591BA4365600D04972 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6534D5751BA4369200D04972 /* Latch.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6534D5631BA4365600D04972 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6534D5771BA436A400D04972 /* LatchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656BF5621B97648A00CE90D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,6 +412,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6534D56A1BA4365600D04972 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6534D55D1BA4365600D04972 /* Latch-OSX */;
+			targetProxy = 6534D5691BA4365600D04972 /* PBXContainerItemProxy */;
+		};
 		656BF5741B97648A00CE90D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 656BF5661B97648A00CE90D4 /* Latch */;
@@ -345,6 +462,72 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		6534D56F1BA4365600D04972 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Latch-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.rocketapps.Latch-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6534D5701BA4365600D04972 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Latch-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.rocketapps.Latch-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6534D5711BA4365600D04972 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Latch-OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.rocketapps.Latch-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6534D5721BA4365600D04972 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Latch-OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.rocketapps.Latch-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -507,6 +690,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6534D5731BA4365600D04972 /* Build configuration list for PBXNativeTarget "Latch-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6534D56F1BA4365600D04972 /* Debug */,
+				6534D5701BA4365600D04972 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6534D5741BA4365600D04972 /* Build configuration list for PBXNativeTarget "Latch-OSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6534D5711BA4365600D04972 /* Debug */,
+				6534D5721BA4365600D04972 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		656BF5611B97648A00CE90D4 /* Build configuration list for PBXProject "Latch" */ = {
 			isa = XCConfigurationList;
