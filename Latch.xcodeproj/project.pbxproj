@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6534D5421BA42B3200D04972 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53A1BA42B3200D04972 /* Debug.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5431BA42B3200D04972 /* iOS Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53B1BA42B3200D04972 /* iOS Framework.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5441BA42B3200D04972 /* iOS Static Library.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53C1BA42B3200D04972 /* iOS Static Library.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5451BA42B3200D04972 /* iOS Tests.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53D1BA42B3200D04972 /* iOS Tests.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5461BA42B3200D04972 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53E1BA42B3200D04972 /* Release.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5471BA42B3200D04972 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D53F1BA42B3200D04972 /* Shared.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5481BA42B3200D04972 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D5401BA42B3200D04972 /* Warnings.xcconfig */; settings = {ASSET_TAGS = (); }; };
+		6534D5491BA42B3200D04972 /* watchOS Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */; settings = {ASSET_TAGS = (); }; };
 		656BF56B1B97648A00CE90D4 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		656BF5721B97648A00CE90D4 /* Latch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656BF5671B97648A00CE90D4 /* Latch.framework */; };
 		656BF5771B97648A00CE90D4 /* LatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5761B97648A00CE90D4 /* LatchTests.swift */; };
@@ -24,6 +32,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6534D53A1BA42B3200D04972 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		6534D53B1BA42B3200D04972 /* iOS Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS Framework.xcconfig"; sourceTree = "<group>"; };
+		6534D53C1BA42B3200D04972 /* iOS Static Library.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS Static Library.xcconfig"; sourceTree = "<group>"; };
+		6534D53D1BA42B3200D04972 /* iOS Tests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS Tests.xcconfig"; sourceTree = "<group>"; };
+		6534D53E1BA42B3200D04972 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		6534D53F1BA42B3200D04972 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		6534D5401BA42B3200D04972 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS Framework.xcconfig"; sourceTree = "<group>"; };
 		656BF5671B97648A00CE90D4 /* Latch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Latch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		656BF56A1B97648A00CE90D4 /* Latch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Latch.h; sourceTree = "<group>"; };
 		656BF56C1B97648A00CE90D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,9 +68,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6534D5381BA42B3200D04972 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				6534D5391BA42B3200D04972 /* xcconfigs */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		6534D5391BA42B3200D04972 /* xcconfigs */ = {
+			isa = PBXGroup;
+			children = (
+				6534D53A1BA42B3200D04972 /* Debug.xcconfig */,
+				6534D53B1BA42B3200D04972 /* iOS Framework.xcconfig */,
+				6534D53C1BA42B3200D04972 /* iOS Static Library.xcconfig */,
+				6534D53D1BA42B3200D04972 /* iOS Tests.xcconfig */,
+				6534D53E1BA42B3200D04972 /* Release.xcconfig */,
+				6534D53F1BA42B3200D04972 /* Shared.xcconfig */,
+				6534D5401BA42B3200D04972 /* Warnings.xcconfig */,
+				6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */,
+			);
+			path = xcconfigs;
+			sourceTree = "<group>";
+		};
 		656BF55D1B97648A00CE90D4 = {
 			isa = PBXGroup;
 			children = (
+				6534D5381BA42B3200D04972 /* External */,
 				656BF5691B97648A00CE90D4 /* Latch */,
 				656BF5751B97648A00CE90D4 /* LatchTests */,
 				656BF5681B97648A00CE90D4 /* Products */,
@@ -180,6 +220,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6534D5491BA42B3200D04972 /* watchOS Framework.xcconfig in Resources */,
+				6534D5431BA42B3200D04972 /* iOS Framework.xcconfig in Resources */,
+				6534D5441BA42B3200D04972 /* iOS Static Library.xcconfig in Resources */,
+				6534D5421BA42B3200D04972 /* Debug.xcconfig in Resources */,
+				6534D5451BA42B3200D04972 /* iOS Tests.xcconfig in Resources */,
+				6534D5461BA42B3200D04972 /* Release.xcconfig in Resources */,
+				6534D5481BA42B3200D04972 /* Warnings.xcconfig in Resources */,
+				6534D5471BA42B3200D04972 /* Shared.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
