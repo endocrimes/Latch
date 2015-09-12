@@ -383,6 +383,7 @@
 				656BF57D1B97648A00CE90D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		656BF57E1B97648A00CE90D4 /* Build configuration list for PBXNativeTarget "LatchTests" */ = {
 			isa = XCConfigurationList;
@@ -391,6 +392,7 @@
 				656BF5801B97648A00CE90D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

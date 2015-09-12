@@ -1,5 +1,8 @@
 # Xcode
 
+## Modules
+External/
+
 ## Build generated
 build/
 DerivedData
