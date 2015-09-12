@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/dantoml"
   s.platform           = :ios, "8.0"
 	s.platform           = :watchos, "2.0"
+	s.platform           = :osx, "10.9"
   s.source             = { :git => "#{s.homepage}.git", :tag => s.version }
   s.source_files       = "Classes", "Latch/*.{h,swift}"
   s.framework          = "Security"
