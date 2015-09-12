@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name               = "Latch"
-  s.version            = "1.0.0"
+  s.version            = "1.1.0"
   s.summary            = "A simple Swift Keychain Wrapper for iOS"
   s.homepage           = "https://github.com/endocrimes/Latch"
   s.documentation_url  = "https://endocrimes.github.io/Latch"
