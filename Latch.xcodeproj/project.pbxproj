@@ -310,6 +310,7 @@
 /* Begin XCBuildConfiguration section */
 		6534D5551BA42C0700D04972 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -329,6 +330,7 @@
 		};
 		6534D5561BA42C0700D04972 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -504,6 +506,7 @@
 				6534D5561BA42C0700D04972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		656BF5611B97648A00CE90D4 /* Build configuration list for PBXProject "Latch" */ = {
 			isa = XCConfigurationList;
