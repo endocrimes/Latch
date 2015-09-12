@@ -1,5 +1,5 @@
 # Latch
-A simple Swift 2.0 Keychain Wrapper for iOS and watchOS 2.
+A simple Swift 2.0 Keychain Wrapper for iOS, watchOS 2, and OS X.
 
 # Usage
 A proper example of how to use Latch can be seen in the [tests](https://github.com/endocrimes/Latch/blob/master/LatchTests/LatchTests.swift).
