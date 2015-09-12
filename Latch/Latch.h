@@ -6,7 +6,7 @@
 //  Copyright © 2015 Rocket Apps. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for Latch.
 FOUNDATION_EXPORT double LatchVersionNumber;
