@@ -16,6 +16,9 @@ let token = NSString(data: tokenData, encoding: NSUTF8StringEncoding)
 print(token)
 ```
 
+# Documentation
+You can find full documentation for Latch [here](https://danieltomlinson.github.io/Latch), or use the inline documentation.
+
 # Installation
 Latch can be installed using [CocoaPods](https://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage.git), or git submodules.
 
@@ -32,4 +35,16 @@ Latch can be installed using [CocoaPods](https://cocoapods.org), [Carthage](http
 1. `$ git submodule add https://github.com/DanielTomlinson/Latch.git`
 2. `$ git submodule update --init --recursive`
 3. Add the project
+
+# Contributing
+
+## Issues
+Issues and feature requests are welcome, although the intention is to keep Latch lightweight.
+
+## Submitting Pull Requests
+1. Fork it ( http://github.com/DanielTomlinson/Latch/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
