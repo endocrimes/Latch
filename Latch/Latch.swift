@@ -234,7 +234,7 @@ public struct Latch {
         return false
     }
     
-    #if os(ios) || os(watchos)
+    #if os(iOS) || os(watchOS)
     /**
     Remove all objects from the keychain for the current app. Only available on
     iOS and watchOS.
