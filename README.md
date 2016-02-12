@@ -22,7 +22,7 @@ You can find full documentation for Latch [here](https://danieltomlinson.github.
 # Installation
 Latch can be installed using [CocoaPods](https://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage.git), or git submodules.
 
-## Cocoapods
+## CocoaPods
 1. Add `pod "Latch"` to your podfile
 2. Run `pod install`
 
