@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a title="Latch  Reference"></a>
@@ -27,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/LatchAccessibility.html">LatchAccessibility</a>
@@ -35,7 +36,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="Structs.html">Structs</a>
+            <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Latch.html">Latch</a>
@@ -50,24 +51,64 @@
             
             <a href='#latch' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='latch'>Latch</h1>
 
-<p>A simple Swift 2.0 Keychain Wrapper for iOS</p>
+<p>A simple Swift 2.0 Keychain Wrapper for iOS, watchOS 2, and OS X.</p>
 <a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='usage'>Usage</h1>
 
 <p>A proper example of how to use Latch can be seen in the <a href="https://github.com/endocrimes/Latch/blob/master/LatchTests/LatchTests.swift">tests</a>.</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">latch</span> <span class="o">=</span> <span class="kt">Latch</span><span class="p">(</span><span class="nv">service</span><span class="p">:</span> <span class="s">"co.rocketapps.latch.example"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Latch</span>
+
+<span class="k">let</span> <span class="nv">latch</span> <span class="o">=</span> <span class="kt">Latch</span><span class="p">(</span><span class="nv">service</span><span class="p">:</span> <span class="s">"co.rocketapps.latch.example"</span><span class="p">)</span>
 <span class="n">latch</span><span class="o">.</span><span class="nf">setObject</span><span class="p">(</span><span class="s">"super_secret_token"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"FBAccessToken"</span><span class="p">)</span>
 
-<span class="k">let</span> <span class="nv">tokenData</span> <span class="o">=</span> <span class="n">latch</span><span class="o">.</span><span class="nf">dataForKey</span><span class="p">(</span><span class="s">"FBAccessToken"</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">token</span> <span class="o">=</span> <span class="kt">NSString</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="n">tokenData</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">NSUTF8StringEncoding</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">token</span> <span class="o">=</span> <span class="n">latch</span><span class="o">.</span><span class="nf">stringForKey</span><span class="p">(</span><span class="s">"FBAccessToken"</span><span class="p">)</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
 </code></pre>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='documentation'>Documentation</h1>
+
+<p>You can find full documentation for Latch <a href="https://endocrimes.github.io/Latch">here</a>, or use the inline documentation.</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='installation'>Installation</h1>
+
+<p>Latch can be installed using <a href="https://cocoapods.org">CocoaPods</a>, <a href="https://github.com/Carthage/Carthage.git">Carthage</a>, or git submodules.</p>
+<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='cocoapods'>CocoaPods</h2>
+
+<ol>
+<li>Add <code>pod &quot;Latch&quot;</code> to your podfile</li>
+<li>Run <code>pod install</code></li>
+</ol>
+<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='carthage'>Carthage</h2>
+
+<ol>
+<li>Add <code>github &quot;endocrimes/Latch&quot;</code> to your Cartfile</li>
+<li><code>$ carthage update</code></li>
+<li>Copy the frameworks into your Xcode project</li>
+</ol>
+<a href='#git-submodules' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='git-submodules'>Git Submodules</h2>
+
+<ol>
+<li><code>$ git submodule add https://github.com/endocrimes/Latch.git</code></li>
+<li><code>$ git submodule update --init --recursive</code></li>
+<li>Add the project</li>
+</ol>
+<a href='#contributing' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='contributing'>Contributing</h1>
+<a href='#issues' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='issues'>Issues</h2>
+
+<p>Issues and feature requests are welcome, although the intention is to keep Latch lightweight.</p>
+<a href='#submitting-pull-requests' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='submitting-pull-requests'> Submitting Pull Requests</h2>
+
+<ol>
+<li>Fork it ( <a href="http://github.com/endocrimes/Latch/fork">http://github.com/endocrimes/Latch/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://danie.lt" target="_blank" rel="external">Daniel</a>. All rights reserved. (Last updated: 2015-09-11)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="https://endocrimes.com" target="_blank" rel="external">Daniel</a>. All rights reserved. (Last updated: 2016-06-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

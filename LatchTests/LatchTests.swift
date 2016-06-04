@@ -13,10 +13,8 @@ func data(string: String) -> NSData {
     return string.dataUsingEncoding(NSUTF8StringEncoding)!
 }
 
-func AssertSuccessfulWrite(ofData data: NSData?, forKey key: String, inLatch latch: Latch, file: String = __FILE__, line: UInt = __LINE__) {
-    
+func AssertSuccessfulWrite(ofData data: NSData?, forKey key: String, inLatch latch: Latch, file: StaticString = #file, line: UInt = #line) {    
     let read = latch.dataForKey(key)
-    
     XCTAssertEqual(data, read, file: file, line: line)
 }
 
@@ -48,6 +46,18 @@ class LatchTests: XCTestCase {
         
         AssertSuccessfulWrite(ofData: data(testString), forKey: testKey, inLatch: latch)
     }
+
+		func test_can_read_string_from_keychain() {
+		    let testKey = "test_can_read_string_From_keychain"
+				let testString = "Hello, world."
+
+				latch.setObject(testString, forKey: testKey)
+
+				let retreived = latch.stringForKey(testKey)
+
+				XCTAssertNotNil(retreived)
+				XCTAssertEqual(testString, retreived)
+		}
     
     func test_can_write_nsdata_to_keychain() {
         let testKey = "test_can_write_nsdata_to_keychain"

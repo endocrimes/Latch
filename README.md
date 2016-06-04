@@ -10,8 +10,7 @@ import Latch
 let latch = Latch(service: "co.rocketapps.latch.example")
 latch.setObject("super_secret_token", forKey: "FBAccessToken")
 
-let tokenData = latch.dataForKey("FBAccessToken")
-let token = NSString(data: tokenData, encoding: NSUTF8StringEncoding)
+let token = latch.stringForKey("FBAccessToken")
 
 print(token)
 ```
