@@ -22,7 +22,7 @@ public enum LatchAccessibility: RawRepresentable {
     Data with this attribute will migrate to a new device when using encrypted
     backups.
     */
-    case WhenUnlocked
+    case whenUnlocked
 
     /**
     Data can only be accessed once the device has been unlocked after a restart.
@@ -32,7 +32,7 @@ public enum LatchAccessibility: RawRepresentable {
     Data with this attribute will migrate to a new device
     when using encrypted backups.
     */
-    case AfterFirstUnlock
+    case afterFirstUnlock
 
     /**
     Data can always be accessed regardless of the lock state of the device. 
@@ -41,7 +41,7 @@ public enum LatchAccessibility: RawRepresentable {
     Items with this attribute will migrate to a new device when using encrypted 
     backups.
     */
-    case Always
+    case always
 
     /**
     Data can only be accessed while the device is unlocked. This is recommended 
@@ -51,7 +51,7 @@ public enum LatchAccessibility: RawRepresentable {
     Items with this attribute will never migrate to a new device, so after
     a backup is restored to a new device, these items will be missing.
     */
-    case WhenUnlockedThisDeviceOnly
+    case whenUnlockedThisDeviceOnly
 
     /**
     Data can only be accessed once the device has been unlocked after a restart.
@@ -61,7 +61,7 @@ public enum LatchAccessibility: RawRepresentable {
     Items with this attribute will never migrate to a new device, so after a 
     backup is restored to a new device these items will be missing.
     */
-    case AfterFirstUnlockThisDeviceOnly
+    case afterFirstUnlockThisDeviceOnly
 
     /**
     Data can always be accessed regardless of the lock state of the device. 
@@ -70,7 +70,7 @@ public enum LatchAccessibility: RawRepresentable {
     Items with this attribute will never migrate to a new device, so after a 
     backup is restored to a new device, these items will be missing.
     */
-    case AlwaysThisDeviceOnly
+    case alwaysThisDeviceOnly
 
     /**
     Create a new LatchAccessibility value using a kSecAttrAccessible value.
@@ -80,17 +80,17 @@ public enum LatchAccessibility: RawRepresentable {
     public init?(rawValue: CFString) {
         switch rawValue as NSString {
         case kSecAttrAccessibleWhenUnlocked:
-            self = .WhenUnlocked
+            self = .whenUnlocked
         case kSecAttrAccessibleAfterFirstUnlock:
-            self = .AfterFirstUnlock
+            self = .afterFirstUnlock
         case kSecAttrAccessibleAlways:
-            self = .Always
+            self = .always
         case kSecAttrAccessibleWhenUnlockedThisDeviceOnly:
-            self = .WhenUnlockedThisDeviceOnly
+            self = .whenUnlockedThisDeviceOnly
         case kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly:
-            self = .AfterFirstUnlockThisDeviceOnly
+            self = .afterFirstUnlockThisDeviceOnly
         case kSecAttrAccessibleAlwaysThisDeviceOnly:
-            self = .AlwaysThisDeviceOnly
+            self = .alwaysThisDeviceOnly
         default:
             return nil
         }
@@ -102,17 +102,17 @@ public enum LatchAccessibility: RawRepresentable {
     */
     public var rawValue: CFString {
         switch self {
-        case .WhenUnlocked:
+        case .whenUnlocked:
             return kSecAttrAccessibleWhenUnlocked
-        case .AfterFirstUnlock:
+        case .afterFirstUnlock:
             return kSecAttrAccessibleAfterFirstUnlock
-        case .Always:
+        case .always:
             return kSecAttrAccessibleAlways
-        case .WhenUnlockedThisDeviceOnly:
+        case .whenUnlockedThisDeviceOnly:
             return kSecAttrAccessibleWhenUnlockedThisDeviceOnly
-        case .AfterFirstUnlockThisDeviceOnly:
+        case .afterFirstUnlockThisDeviceOnly:
             return kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        case .AlwaysThisDeviceOnly:
+        case .alwaysThisDeviceOnly:
             return kSecAttrAccessibleAlwaysThisDeviceOnly
         }
     }
@@ -141,7 +141,7 @@ public struct Latch {
 
     :returns: An instance of Latch.
     */
-    public init(service: String, accessGroup: String? = nil, accessibility: LatchAccessibility = .AfterFirstUnlockThisDeviceOnly) {
+    public init(service: String, accessGroup: String? = nil, accessibility: LatchAccessibility = .afterFirstUnlockThisDeviceOnly) {
         state = LatchState(service: service, accessGroup: accessGroup, accessibility: accessibility)
     }
 
@@ -150,27 +150,27 @@ public struct Latch {
     /**
     Retreives the data for a given key, or returns nil.
     */
-    public func dataForKey(key: String) -> NSData? {
+    public func data(forKey key: String) -> Data? {
         var query = baseQuery(forKey: key)
         query[kSecMatchLimit as String] = kSecMatchLimitOne as String
         query[kSecReturnData as String] = true
 
         var dataRef: CFTypeRef?
-        let status = SecItemCopyMatching(query as CFDictionaryRef, &dataRef)
+        let status = SecItemCopyMatching(query as CFDictionary, &dataRef)
         if status != errSecSuccess && status != errSecItemNotFound {
             print("Latch failed to retrieve data for key '\(key)', error: \(status)")
         }
 
-        return dataRef as? NSData
+        return dataRef as? Data
     }
 
     /**
     Retreives the string value for a given key. It will return nil if the data
     is not a UTF8 encoded string.
     */
-    public func stringForKey(key: String) -> String? {
-        guard let data = dataForKey(key) else { return nil }
-        return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+    public func string(forKey key: String) -> String? {
+        guard let data = data(forKey: key) else { return nil }
+        return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
     }
 
     // MARK - Setters
@@ -178,9 +178,9 @@ public struct Latch {
     /**
     Set a string value for a given key.
     */
-    public func setObject(object: String, forKey key: String) -> Bool {
-        if let data = object.dataUsingEncoding(NSUTF8StringEncoding) {
-            return setObject(data, forKey: key)
+    @discardableResult public func set(object: String, forKey key: String) -> Bool {
+        if let data = object.data(using: String.Encoding.utf8) {
+            return set(object: data, forKey: key)
         }
 
         return false
@@ -189,15 +189,15 @@ public struct Latch {
     /**
     Set an NSCoding compliant object for a given key.
     */
-    public func setObject(object: NSCoding, forKey key: String) -> Bool {
-        let data = NSKeyedArchiver.archivedDataWithRootObject(object)
-        return setObject(data, forKey: key)
+    @discardableResult public func set(object: NSCoding, forKey key: String) -> Bool {
+        let data = NSKeyedArchiver.archivedData(withRootObject: object)
+        return set(object: data, forKey: key)
     }
 
     /**
     Set an NSData blob for a given key.
     */
-    public func setObject(object: NSData, forKey key: String) -> Bool {
+    @discardableResult public func set(object: Data, forKey key: String) -> Bool {
         var query = baseQuery(forKey: key)
 
         var update = [String : AnyObject]()
@@ -205,7 +205,7 @@ public struct Latch {
         update[kSecAttrAccessible as String] = state.accessibility.rawValue
 
         var status = errSecSuccess
-        if dataForKey(key) != nil { // Data already exists, we're updating not writing.
+        if data(forKey: key) != nil { // Data already exists, we're updating not writing.
             status = SecItemUpdate(query, update)
         }
         else { // No existing data, write a new item.
@@ -227,10 +227,10 @@ public struct Latch {
     /**
     Remove an object from the keychain for a given key.
     */
-    public func removeObjectForKey(key: String) -> Bool {
+    @discardableResult public func removeObject(forKey key: String) -> Bool {
         let query = baseQuery(forKey: key)
 
-        if dataForKey(key) != nil {
+        if data(forKey: key) != nil {
             let status = SecItemDelete(query)
             if status != errSecSuccess {
                 print("Latch failed to remove data for key '\(key)', error: \(status)")
@@ -248,7 +248,7 @@ public struct Latch {
     Remove all objects from the keychain for the current app. Only available on
     iOS and watchOS.
     */
-    public func resetKeychain() -> Bool {
+    @discardableResult public func resetKeychain() -> Bool {
         let query = [kSecClass as String : kSecClassGenericPassword as String]
         let status = SecItemDelete(query)
         if status != errSecSuccess {
