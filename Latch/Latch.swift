@@ -152,8 +152,8 @@ public struct Latch {
     */
     public func data(forKey key: String) -> Data? {
         var query = baseQuery(forKey: key)
-        query[kSecMatchLimit as String] = kSecMatchLimitOne as String
-        query[kSecReturnData as String] = true
+        query[kSecMatchLimit] = kSecMatchLimitOne
+        query[kSecReturnData] = true
 
         var dataRef: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &dataRef)
@@ -200,9 +200,9 @@ public struct Latch {
     @discardableResult public func set(object: Data, forKey key: String) -> Bool {
         var query = baseQuery(forKey: key)
 
-        var update = [String : AnyObject]()
-        update[kSecValueData as String] = object
-        update[kSecAttrAccessible as String] = state.accessibility.rawValue
+        var update = [NSString : AnyObject]()
+        update[kSecValueData] = object
+        update[kSecAttrAccessible] = state.accessibility.rawValue
 
         var status = errSecSuccess
         if data(forKey: key) != nil { // Data already exists, we're updating not writing.
@@ -249,7 +249,7 @@ public struct Latch {
     iOS and watchOS.
     */
     @discardableResult public func resetKeychain() -> Bool {
-        let query = [kSecClass as String : kSecClassGenericPassword as String]
+        let query = [kSecClass : kSecClassGenericPassword]
         let status = SecItemDelete(query)
         if status != errSecSuccess {
             print("Latch failed to reset keychain, error: \(status)")
@@ -262,13 +262,14 @@ public struct Latch {
 
     // MARK - Private
 
-    private func baseQuery(forKey key: String) -> [String : AnyObject] {
-        var query = [String : AnyObject]()
-        if state.service.characters.count > 0 {
-            query[kSecAttrService as String] = state.service
+    private func baseQuery(forKey key: String) -> [NSString : AnyObject] {
+        var query = [NSString : AnyObject]()
+        if !state.service.isEmpty {
+            query[kSecAttrService] = state.service
         }
-        query[kSecClass as String] = kSecClassGenericPassword as String
-        query[kSecAttrAccount as String] = key
+        query[kSecClass] = kSecClassGenericPassword
+        query[kSecAttrAccount] = key
+        query[kSecAttrGeneric] = key
 
         #if TARGET_OS_IOS && !TARGET_OS_SIMULATOR
         // Ignore the access group if running on the iPhone simulator.
@@ -280,8 +281,8 @@ public struct Latch {
         // If a SecItem contains an access group attribute, SecItemAdd and SecItemUpdate on the
         // simulator will return -25243 (errSecNoAccessForItem).
 
-        if state.accessGroup?.characters.count > 0 {
-            query[kSecAttrAccessGroup as String] = state.accessGroup
+        if !state.accessGroup?.isEmpty {
+            query[kSecAttrAccessGroup] = state.accessGroup
         }
         #endif
 
