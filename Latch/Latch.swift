@@ -130,7 +130,7 @@ Multiple Latch instances can use the same service, accessGroup, and
 accessibility attributes.
 */
 public struct Latch {
-    private var state: LatchState
+    fileprivate var state: LatchState
 
     /**
     Create a new instance of Latch with a service, accessGroup, and accessibility.
@@ -178,26 +178,31 @@ public struct Latch {
     /**
     Set a string value for a given key.
     */
-    @discardableResult public func set(object: String, forKey key: String) -> Bool {
+    @discardableResult public func set(_ object: String, forKey key: String) -> Bool {
+        print("object: \(object)")
+        print("key: \(key)")
         if let data = object.data(using: String.Encoding.utf8) {
-            return set(object: data, forKey: key)
+            print("set data")
+            return set(data, forKey: key)
         }
-
+        else {
+            print("failed to set data")
+        }
         return false
     }
 
     /**
     Set an NSCoding compliant object for a given key.
     */
-    @discardableResult public func set(object: NSCoding, forKey key: String) -> Bool {
+    @discardableResult public func set(_ object: NSCoding, forKey key: String) -> Bool {
         let data = NSKeyedArchiver.archivedData(withRootObject: object)
-        return set(object: data, forKey: key)
+        return set(data, forKey: key)
     }
 
     /**
     Set an NSData blob for a given key.
     */
-    @discardableResult public func set(object: Data, forKey key: String) -> Bool {
+    @discardableResult public func set(_ object: Data, forKey key: String) -> Bool {
         var query = baseQuery(forKey: key)
 
         var update = [NSString : AnyObject]()
@@ -250,7 +255,9 @@ public struct Latch {
     */
     @discardableResult public func resetKeychain() -> Bool {
         let query:[String: AnyObject] = [kSecClass as String : kSecClassGenericPassword]
+        
         let status = SecItemDelete(query as CFDictionary)
+        print("status: \(status)")
         if status != errSecSuccess {
             print("Latch failed to reset keychain, error: \(status)")
             return false
@@ -262,7 +269,7 @@ public struct Latch {
 
     // MARK - Private
 
-    private func baseQuery(forKey key: String) -> [NSString : AnyObject] {
+    fileprivate func baseQuery(forKey key: String) -> [NSString : AnyObject] {
         var query = [NSString : AnyObject]()
         if !state.service.isEmpty {
             query[kSecAttrService] = state.service as AnyObject?
