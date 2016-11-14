@@ -9,12 +9,12 @@
 import XCTest
 @testable import Latch
 
-func data(string: String) -> NSData {
-    return string.dataUsingEncoding(NSUTF8StringEncoding)!
+func data(_ string: String) -> Data {
+    return string.data(using: String.Encoding.utf8)!
 }
 
-func AssertSuccessfulWrite(ofData data: NSData?, forKey key: String, inLatch latch: Latch, file: StaticString = #file, line: UInt = #line) {    
-    let read = latch.dataForKey(key)
+func AssertSuccessfulWrite(ofData data: Data?, forKey key: String, inLatch latch: Latch, file: StaticString = #file, line: UInt = #line) {    
+    let read = latch.data(forKey: key)
     XCTAssertEqual(data, read, file: file, line: line)
 }
 
@@ -38,9 +38,8 @@ class LatchTests: XCTestCase {
         let testKey = "test_can_write_string_to_keychain"
         let testString = "Hello, world."
         
-        latch.setObject(testString, forKey: testKey)
-        
-        let retreivedData = latch.dataForKey(testKey)
+        latch.set(testString, forKey: testKey)
+        let retreivedData = latch.data(forKey: testKey)
         
         XCTAssertNotNil(retreivedData)
         
@@ -51,9 +50,8 @@ class LatchTests: XCTestCase {
 		    let testKey = "test_can_read_string_From_keychain"
 				let testString = "Hello, world."
 
-				latch.setObject(testString, forKey: testKey)
-
-				let retreived = latch.stringForKey(testKey)
+				latch.set(testString, forKey: testKey)
+				let retreived = latch.string(forKey: testKey)
 
 				XCTAssertNotNil(retreived)
 				XCTAssertEqual(testString, retreived)
@@ -64,7 +62,7 @@ class LatchTests: XCTestCase {
         let testString = "Hello, world."
         let testData = data(testString)
         
-        latch.setObject(testData, forKey: testKey)
+        latch.set(testData, forKey: testKey)
         
         AssertSuccessfulWrite(ofData: testData, forKey: testKey, inLatch: latch)
     }
@@ -73,15 +71,15 @@ class LatchTests: XCTestCase {
         let testKey = "test_can_write_nscoding_compliant_object_to_keychain"
         let testObject = ["hello" : "world"] as NSDictionary
         
-        latch.setObject(testObject, forKey: testKey)
+        latch.set(testObject, forKey: testKey)
         
-        AssertSuccessfulWrite(ofData: NSKeyedArchiver.archivedDataWithRootObject(testObject), forKey: testKey, inLatch: latch)
+        AssertSuccessfulWrite(ofData: NSKeyedArchiver.archivedData(withRootObject: testObject), forKey: testKey, inLatch: latch)
     }
     
     func test_can_read_nil_data_for_unset_key() {
         let testKey = "test_can_read_nil_data_for_unset_key"
         
-        XCTAssertNil(latch.dataForKey(testKey))
+        XCTAssertNil(latch.data(forKey: testKey))
     }
     
     func test_can_update_items() {
@@ -89,13 +87,13 @@ class LatchTests: XCTestCase {
         let testString = "Hello, world."
         let testUpdateString = "World, Hello."
         
-        latch.setObject(testString, forKey: testKey)
+        latch.set(testString, forKey: testKey)
         
         // Assert initial set worked
         AssertSuccessfulWrite(ofData: data(testString), forKey: testKey, inLatch: latch)
         
         // Set item for the same key
-        latch.setObject(testUpdateString, forKey: testKey)
+        latch.set(testUpdateString, forKey: testKey)
 
         // Assert the update worked
         AssertSuccessfulWrite(ofData: data(testUpdateString), forKey: testKey, inLatch: latch)
@@ -105,11 +103,11 @@ class LatchTests: XCTestCase {
         let testKey = "test_can_remove_object_for_key"
         let testObject = "Hello, world."
         
-        latch.setObject(testObject, forKey: testKey)
+        latch.set(testObject, forKey: testKey)
         
         AssertSuccessfulWrite(ofData: data(testObject), forKey: testKey, inLatch: latch)
         
-        latch.removeObjectForKey(testKey)
+        latch.removeObject(forKey: testKey)
         
         AssertSuccessfulWrite(ofData: nil, forKey: testKey, inLatch: latch)
     }
@@ -117,7 +115,7 @@ class LatchTests: XCTestCase {
     func test_safe_to_remove_object_for_an_unset_key() {
         let testKey = "test_safe_to_remove_object_for_an_unset_key"
         
-        latch.removeObjectForKey(testKey)
+        latch.removeObject(forKey: testKey)
     }
     
     #if os(iOS) || os(watchOS)
@@ -129,7 +127,7 @@ class LatchTests: XCTestCase {
         ]
         
         for (key, data) in values {
-            latch.setObject(data, forKey: key)
+            latch.set(data, forKey: key)
         }
         
         latch.resetKeychain()
