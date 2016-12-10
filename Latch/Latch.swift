@@ -155,6 +155,7 @@ public struct Latch {
         query[kSecMatchLimit] = kSecMatchLimitOne
         query[kSecReturnData] = true as AnyObject?
 
+
         var dataRef: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &dataRef)
         if status != errSecSuccess && status != errSecItemNotFound {
@@ -179,14 +180,8 @@ public struct Latch {
     Set a string value for a given key.
     */
     @discardableResult public func set(_ object: String, forKey key: String) -> Bool {
-        print("object: \(object)")
-        print("key: \(key)")
         if let data = object.data(using: String.Encoding.utf8) {
-            print("set data")
             return set(data, forKey: key)
-        }
-        else {
-            print("failed to set data")
         }
         return false
     }
