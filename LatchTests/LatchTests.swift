@@ -62,8 +62,7 @@ class LatchTests: XCTestCase {
         let testString = "Hello, world."
         let testData = data(testString)
         
-        latch.set(testData, forKey: testKey)
-        
+        latch.set(testData, forKey: testKey)        
         AssertSuccessfulWrite(ofData: testData, forKey: testKey, inLatch: latch)
     }
     
@@ -72,6 +71,7 @@ class LatchTests: XCTestCase {
         let testObject = ["hello" : "world"] as NSDictionary
         
         latch.set(testObject, forKey: testKey)
+
         
         AssertSuccessfulWrite(ofData: NSKeyedArchiver.archivedData(withRootObject: testObject), forKey: testKey, inLatch: latch)
     }
@@ -88,6 +88,7 @@ class LatchTests: XCTestCase {
         let testUpdateString = "World, Hello."
         
         latch.set(testString, forKey: testKey)
+
         
         // Assert initial set worked
         AssertSuccessfulWrite(ofData: data(testString), forKey: testKey, inLatch: latch)
@@ -128,6 +129,7 @@ class LatchTests: XCTestCase {
         
         for (key, data) in values {
             latch.set(data, forKey: key)
+
         }
         
         latch.resetKeychain()
