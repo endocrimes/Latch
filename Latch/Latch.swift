@@ -16,8 +16,8 @@ keychain items. It maps 1:1 with kSecAttrAccessible values.
 public enum LatchAccessibility: RawRepresentable {
     /**
     Data can only be accessed while the device is unlocked. This is recommended
-    for items that only need be accesible while the application is in the 
-    foreground. 
+    for items that only need be accessible while the application is in the
+    foreground.
 
     Data with this attribute will migrate to a new device when using encrypted
     backups.
@@ -26,7 +26,7 @@ public enum LatchAccessibility: RawRepresentable {
 
     /**
     Data can only be accessed once the device has been unlocked after a restart.
-    This is recommended for items that need to be accesible by background
+    This is recommended for items that need to be accessible by background
     applications.
 
     Data with this attribute will migrate to a new device
@@ -35,17 +35,17 @@ public enum LatchAccessibility: RawRepresentable {
     case afterFirstUnlock
 
     /**
-    Data can always be accessed regardless of the lock state of the device. 
+    Data can always be accessed regardless of the lock state of the device.
     This is **not recommended** for anything except system use.
 
-    Items with this attribute will migrate to a new device when using encrypted 
+    Items with this attribute will migrate to a new device when using encrypted
     backups.
     */
     case always
 
     /**
-    Data can only be accessed while the device is unlocked. This is recommended 
-    for items that only need be accesible while the application is in the 
+    Data can only be accessed while the device is unlocked. This is recommended
+    for items that only need be accessible while the application is in the
     foreground.
 
     Items with this attribute will never migrate to a new device, so after
@@ -58,16 +58,16 @@ public enum LatchAccessibility: RawRepresentable {
     This is recommended for items that need to be accessible by background
     applications.
 
-    Items with this attribute will never migrate to a new device, so after a 
+    Items with this attribute will never migrate to a new device, so after a
     backup is restored to a new device these items will be missing.
     */
     case afterFirstUnlockThisDeviceOnly
 
     /**
-    Data can always be accessed regardless of the lock state of the device. 
-    This option is not recommended for anything except system use. 
+    Data can always be accessed regardless of the lock state of the device.
+    This option is not recommended for anything except system use.
 
-    Items with this attribute will never migrate to a new device, so after a 
+    Items with this attribute will never migrate to a new device, so after a
     backup is restored to a new device, these items will be missing.
     */
     case alwaysThisDeviceOnly
@@ -126,11 +126,11 @@ private struct LatchState {
 
 /**
 Latch is a simple abstraction around the iOS and OS X keychain API.
-Multiple Latch instances can use the same service, accessGroup, and 
+Multiple Latch instances can use the same service, accessGroup, and
 accessibility attributes.
 */
 public struct Latch {
-    private var state: LatchState
+    fileprivate var state: LatchState
 
     /**
     Create a new instance of Latch with a service, accessGroup, and accessibility.
@@ -153,7 +153,8 @@ public struct Latch {
     public func data(forKey key: String) -> Data? {
         var query = baseQuery(forKey: key)
         query[kSecMatchLimit] = kSecMatchLimitOne
-        query[kSecReturnData] = true
+        query[kSecReturnData] = true as AnyObject?
+
 
         var dataRef: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &dataRef)
@@ -178,42 +179,41 @@ public struct Latch {
     /**
     Set a string value for a given key.
     */
-    @discardableResult public func set(object: String, forKey key: String) -> Bool {
+    @discardableResult public func set(_ object: String, forKey key: String) -> Bool {
         if let data = object.data(using: String.Encoding.utf8) {
-            return set(object: data, forKey: key)
+            return set(data, forKey: key)
         }
-
         return false
     }
 
     /**
     Set an NSCoding compliant object for a given key.
     */
-    @discardableResult public func set(object: NSCoding, forKey key: String) -> Bool {
+    @discardableResult public func set(_ object: NSCoding, forKey key: String) -> Bool {
         let data = NSKeyedArchiver.archivedData(withRootObject: object)
-        return set(object: data, forKey: key)
+        return set(data, forKey: key)
     }
 
     /**
     Set an NSData blob for a given key.
     */
-    @discardableResult public func set(object: Data, forKey key: String) -> Bool {
+    @discardableResult public func set(_ object: Data, forKey key: String) -> Bool {
         var query = baseQuery(forKey: key)
 
         var update = [NSString : AnyObject]()
-        update[kSecValueData] = object
+        update[kSecValueData] = object as AnyObject?
         update[kSecAttrAccessible] = state.accessibility.rawValue
 
         var status = errSecSuccess
         if data(forKey: key) != nil { // Data already exists, we're updating not writing.
-            status = SecItemUpdate(query, update)
+            status = SecItemUpdate(query as CFDictionary, update as CFDictionary)
         }
         else { // No existing data, write a new item.
             for (key, value) in update {
                 query[key] = value
             }
 
-            status = SecItemAdd(query, nil)
+            status = SecItemAdd(query as CFDictionary, nil)
         }
 
         if status != errSecSuccess {
@@ -231,7 +231,7 @@ public struct Latch {
         let query = baseQuery(forKey: key)
 
         if data(forKey: key) != nil {
-            let status = SecItemDelete(query)
+            let status = SecItemDelete(query as CFDictionary)
             if status != errSecSuccess {
                 print("Latch failed to remove data for key '\(key)', error: \(status)")
                 return false
@@ -249,8 +249,10 @@ public struct Latch {
     iOS and watchOS.
     */
     @discardableResult public func resetKeychain() -> Bool {
-        let query = [kSecClass : kSecClassGenericPassword]
-        let status = SecItemDelete(query)
+        let query:[String: AnyObject] = [kSecClass as String : kSecClassGenericPassword]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        print("status: \(status)")
         if status != errSecSuccess {
             print("Latch failed to reset keychain, error: \(status)")
             return false
@@ -262,14 +264,14 @@ public struct Latch {
 
     // MARK - Private
 
-    private func baseQuery(forKey key: String) -> [NSString : AnyObject] {
+    fileprivate func baseQuery(forKey key: String) -> [NSString : AnyObject] {
         var query = [NSString : AnyObject]()
         if !state.service.isEmpty {
-            query[kSecAttrService] = state.service
+            query[kSecAttrService] = state.service as AnyObject?
         }
         query[kSecClass] = kSecClassGenericPassword
-        query[kSecAttrAccount] = key
-        query[kSecAttrGeneric] = key
+        query[kSecAttrAccount] = key as AnyObject?
+        query[kSecAttrGeneric] = key as AnyObject?
 
         #if TARGET_OS_IOS && !TARGET_OS_SIMULATOR
         // Ignore the access group if running on the iPhone simulator.
