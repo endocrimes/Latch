@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6534D5571BA42C1900D04972 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6534D5581BA42C2000D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; settings = {ASSET_TAGS = (); }; };
-		6534D5681BA4365600D04972 /* Latch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534D55E1BA4365600D04972 /* Latch.framework */; settings = {ASSET_TAGS = (); }; };
-		6534D5751BA4369200D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; settings = {ASSET_TAGS = (); }; };
+		6534D5581BA42C2000D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; };
+		6534D5681BA4365600D04972 /* Latch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534D55E1BA4365600D04972 /* Latch.framework */; };
+		6534D5751BA4369200D04972 /* Latch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5811B97649700CE90D4 /* Latch.swift */; };
 		6534D5761BA4369A00D04972 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6534D5771BA436A400D04972 /* LatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5761B97648A00CE90D4 /* LatchTests.swift */; settings = {ASSET_TAGS = (); }; };
+		6534D5771BA436A400D04972 /* LatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5761B97648A00CE90D4 /* LatchTests.swift */; };
 		656BF56B1B97648A00CE90D4 /* Latch.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BF56A1B97648A00CE90D4 /* Latch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		656BF5721B97648A00CE90D4 /* Latch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656BF5671B97648A00CE90D4 /* Latch.framework */; };
 		656BF5771B97648A00CE90D4 /* LatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BF5761B97648A00CE90D4 /* LatchTests.swift */; };
@@ -293,23 +293,30 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Rocket Apps";
 				TargetAttributes = {
 					6534D54E1BA42C0700D04972 = {
 						CreatedOnToolsVersion = 7.0;
+						ProvisioningStyle = Manual;
 					};
 					6534D55D1BA4365600D04972 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					6534D5661BA4365600D04972 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					656BF5661B97648A00CE90D4 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					656BF5701B97648A00CE90D4 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -434,6 +441,7 @@
 			baseConfigurationReference = 6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -454,6 +462,7 @@
 			baseConfigurationReference = 6534D5411BA42B3200D04972 /* watchOS Framework.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -464,6 +473,7 @@
 				PRODUCT_NAME = Latch;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -487,6 +497,7 @@
 				PRODUCT_NAME = Latch;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -508,6 +519,8 @@
 				PRODUCT_NAME = Latch;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -522,6 +535,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "co.rocketapps.Latch-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -536,6 +550,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "co.rocketapps.Latch-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -552,8 +568,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -600,8 +618,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -634,6 +654,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -644,6 +665,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -653,6 +675,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -662,6 +685,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.rocketapps.Latch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -669,10 +694,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6534D53D1BA42B3200D04972 /* iOS Tests.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LatchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.rocketapps.LatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -680,10 +707,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6534D53D1BA42B3200D04972 /* iOS Tests.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LatchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.rocketapps.LatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -706,6 +736,7 @@
 				6534D5701BA4365600D04972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6534D5741BA4365600D04972 /* Build configuration list for PBXNativeTarget "Latch-OSXTests" */ = {
 			isa = XCConfigurationList;
@@ -714,6 +745,7 @@
 				6534D5721BA4365600D04972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		656BF5611B97648A00CE90D4 /* Build configuration list for PBXProject "Latch" */ = {
 			isa = XCConfigurationList;
