@@ -5,4 +5,3 @@ machine:
 test:
   override:
     - set -o pipefail && xcodebuild -project 'Latch.xcodeproj' -scheme 'Latch-OSX' clean build test | tee $CIRCLE_ARTIFACTS/xcode_raw_osx.log | xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results_osx.xml
-    - set -o pipefail && xcodebuild -project 'Latch.xcodeproj' -scheme 'Latch' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= clean build test | tee $CIRCLE_ARTIFACTS/xcode_raw_osx.log | xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results_osx.xml
