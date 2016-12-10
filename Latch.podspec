@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name                      = "Latch"
-  s.version                   = "1.2.4"
+  s.version                   = "1.3.0"
   s.summary                   = "A simple Swift Keychain Wrapper for iOS"
   s.homepage                  = "https://github.com/DanToml/Latch"
   s.documentation_url         = "https://dantoml.github.io/Latch"
   s.license                   = "MIT"
-  s.author                    = { "Daniel Tomlinson" => "Dan@Tomlinson.io" }
+  s.author                    = { "Danielle Tomlinson" => "dan@tomlinson.io" }
   s.social_media_url          = "http://twitter.com/dantoml"
 	s.ios.deployment_target     = "8.0"
 	s.watchos.deployment_target = "2.0"
