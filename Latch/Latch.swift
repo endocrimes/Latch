@@ -78,7 +78,7 @@ public enum LatchAccessibility: RawRepresentable {
     :param: rawValue A CFString representing a kSecAttrAccessible value.
     */
     public init?(rawValue: CFString) {
-        switch rawValue as NSString {
+        switch rawValue {
         case kSecAttrAccessibleWhenUnlocked:
             self = .whenUnlocked
         case kSecAttrAccessibleAfterFirstUnlock:
