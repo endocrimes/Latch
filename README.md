@@ -16,7 +16,7 @@ print(token)
 ```
 
 # Documentation
-You can find full documentation for Latch [here](https://dantoml.github.io/Latch), or use the inline documentation.
+You can find full documentation for Latch [here](https://endocrimes.github.io/Latch), or use the inline documentation.
 
 # Installation
 Latch can be installed using [CocoaPods](https://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage.git), or git submodules.
