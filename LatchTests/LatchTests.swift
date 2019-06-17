@@ -2,7 +2,7 @@
 //  LatchTests.swift
 //  LatchTests
 //
-//  Created by  Danielle Lancashireon 02/09/2015.
+//  Created by Danielle Lancashire on 02/09/2015.
 //  Copyright © 2015 Rocket Apps. All rights reserved.
 //
 
