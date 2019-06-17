@@ -2,7 +2,7 @@
 
 docs:
 	jazzy \
-		--author  Danielle Lancashire\
+		--author Danielle Lancashire \
 		--author_url https://endocrimes.com \
 		--github_url https://github.com/endocrimes/Latch \
 		--module-version $(VERSION) \
